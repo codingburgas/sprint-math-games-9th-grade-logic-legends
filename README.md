@@ -1,1 +1,30 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/durmtwmj)
+<h1 align = "center">Logic Legends</h1>
+<p align="center">
+  Logo here
+</p><hr>
+<h2 align="center">About The Game</h2>
+<p align="center">Our game <b>WIP<b> is based around <b>bitwise operations<b>.</p>
+<p align="center"><b>WIP<b> is a game, in which you have to solve math problems.</p>
+<p align="center">Think fast, because you have a couple of seconds to think.</p>
+<hr>
+<h2 align="center">Technologies </h2>
+<h3 align="center">These are the Technologies, that we used.</h3>
+<p align="center">
+    <a href="https://git-scm.com/"><img src="https://git-scm.com/images/logos/downloads/Git-Icon-Black.png" alt="Git logo" width = "50"/></a>
+    <a href="https://github.com/"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111612.png" alt="GitHub logo" width = "50"/></a>
+    <a href="https://www.cplusplus.com/"><img src="https://brandslogos.com/wp-content/uploads/thumbs/c-logo-vector.svg" alt="C++ logo" width="50px"/></a>
+    <a href="https://visualstudio.microsoft.com/vs/"><img src="https://visualstudio.microsoft.com/wp-content/uploads/2021/10/Product-Icon.svg" alt="GitHub logo" width = "50"/></a>
+    <a href="https://code.visualstudio.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" alt="VS code logo" width=48px /></a>
+    <a href="https://www.microsoft.com/en/microsoft-teams/group-chat-software"><img src="https://img.icons8.com/color/344/microsoft-teams.png" alt = "MS Teams logo" width="50px" /></a>
+    <a href="https://www.microsoft.com/en-ww/microsoft-365/word"><img src="https://img.icons8.com/color/344/ms-word.png" alt="MS Word logo" width=48px /></a>
+    <a href="https://www.microsoft.com/en-ww/microsoft-365/powerpoint"><img src="https://img.icons8.com/color/344/ms-powerpoint.png" alt="MS PowerPoint logo" width=48px /></a>
+</p>
+<hr>
+<h2 align="center">Our Team</h2>
+<p align="center">
+ <a> Мартин Атанасов Желев </a> - Scrum Trainer<br>
+ <a> Димитър Пламенов Нягалов </a> - Front-End Developer<br>
+ <a> Георги Ивайлов Николов </a> - Back-End Developer <br>
+ <a> Пламен Николаев Русев </a> - Designer <br>
+</p>
+<hr>
