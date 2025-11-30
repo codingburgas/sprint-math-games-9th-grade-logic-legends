@@ -50,11 +50,11 @@ string getDifficultyName(int level)
     switch (level)
     {
     case 1:
-        return "Easy";
+        return "Easy (4x4 grid)";
     case 2:
-        return "Normal";
+        return "Normal (5x5 grid)";
     case 3:
-        return "Hard";
+        return "Hard (7x7 grid)";
     default:
         return "Unknown";
     }
@@ -79,6 +79,23 @@ void switchMainMenuChoice(int mainMenuChoice)
         cout << "Invalid choice." << endl;
         break;
     }
+}
+void switchDifficultyMenuChoice(int difficultyMenuChoice){
+    switch(difficultyMenuChoice)
+        {
+            case 1:
+                cout << "You have chosen Easy (4x4 grid)." << endl;
+                cout << "Generating grid...";
+            case 2:
+                cout << "You have chosen Normal (5x5 grid).";
+                cout << "Generating grid...";
+            case 3:
+                cout << "You have chosen Hard (7x7 grid)." << endl;
+                cout << "Generating grid...";
+            default:
+                cout << "Invalid choice";
+            
+        }
 }
 int main()
 {
