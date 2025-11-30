@@ -94,7 +94,7 @@ void switchDifficultyMenuChoice(int difficultyMenuChoice){
                 cout << "Generating grid...";
             default:
                 cout << "Invalid choice";
-            
+             
         }
 }
 int main()
@@ -116,5 +116,13 @@ int main()
             }
             mainMenuChoice = 0;
         }
+    }
+    while (mainMenuChoice == 1){
+        difficultyMenuChoice = selectDifficultyMenu();
+        switchDifficultyMenuChoice(difficultyMenuChoice)
+            if (mainMenuChoice != 1 && mainMenuChoice != 2 && mainMenuChoice != 3)
+            {
+                cout << "Invalid choice. Please select 1, 2, or 3." << endl;
+            }
     }
 }
