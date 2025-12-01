@@ -23,9 +23,9 @@
 <hr>
 <h2 align="center">Our Team</h2>
 <p align="center">
- <a> Мартин Атанасов Желев </a> - Scrum Trainer<br>
- <a> Димитър Пламенов Нягалов </a> - Front-End Developer<br>
- <a> Георги Ивайлов Николов </a> - Back-End Developer <br>
- <a> Пламен Николаев Русев </a> - Designer <br>
+ <a href = "https://github.com/Martin-Zhelev"> Мартин Атанасов Желев </a> - Scrum Trainer<br>
+ <a href = "https://github.com/DimitarNyagalov"> Димитър Пламенов Нягалов </a> - Front-End Developer<br>
+ <a href = "https://github.com/Georgi-Ivaylov-Nikolov"> Георги Ивайлов Николов </a> - Back-End Developer <br>
+ <a href = "https://github.com/PNRusev24"> Пламен Николаев Русев </a> - Designer <br>
 </p>
 <hr>
