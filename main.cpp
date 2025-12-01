@@ -9,12 +9,11 @@ void clearScreen()
 int selectMainMenu()
 {
     clearScreen();
-    cout << "Main Menu\n"
-         << endl;
+    cout << "Main Menu\n"<< endl;
     cout << "1. Start Game" << endl;
     cout << "2. How to Play" << endl;
     cout << "3. Exit" << endl;
-    cout << "\nPlease enter your choice (1-3): ";
+    cout << "\nPlease enter your choice (1-3): " << endl;
     int choice;
     cin >> choice;
     return choice;
@@ -35,8 +34,7 @@ int selectDifficultyMenu()
 void printHowToPlay()
 {
     clearScreen();
-    cout << "How to Play:\n"
-         << endl;
+    cout << "How to Play:\n"<< endl;
     cout << "Select a difficulty level." << endl;
     cout << "A grid will be generated based on the selected difficulty." << endl;
     cout << "Press enter to continue." << endl;
