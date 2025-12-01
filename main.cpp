@@ -86,12 +86,15 @@ void switchDifficultyMenuChoice(int difficultyMenuChoice){
             case 1:
                 cout << "You have chosen Easy (4x4 grid)." << endl;
                 cout << "Generating grid...";
+            break;
             case 2:
                 cout << "You have chosen Normal (5x5 grid).";
                 cout << "Generating grid...";
+            break;
             case 3:
                 cout << "You have chosen Hard (7x7 grid)." << endl;
                 cout << "Generating grid...";
+            break;
             default:
                 cout << "Invalid choice";
              
@@ -102,9 +105,11 @@ int main()
     int difficultyLevel = 0;
     int gridSize = 0;
     int mainMenuChoice = 0;
+    int difficultyMenuChoice;
     bool exitProgram = false;
+    
 
-    while (!exitProgram)
+    while (!exitProgram == true)
     {
         while (mainMenuChoice != 1 && mainMenuChoice != 2 && mainMenuChoice != 3)
         {
@@ -119,7 +124,7 @@ int main()
     }
     while (mainMenuChoice == 1){
         difficultyMenuChoice = selectDifficultyMenu();
-        switchDifficultyMenuChoice(difficultyMenuChoice)
+        switchDifficultyMenuChoice(difficultyMenuChoice);
             if (mainMenuChoice != 1 && mainMenuChoice != 2 && mainMenuChoice != 3)
             {
                 cout << "Invalid choice. Please select 1, 2, or 3." << endl;
