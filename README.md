@@ -1,7 +1,7 @@
 <h1 align = "center">Logic Legends</h1>
 <p align="center">
   <p align="center">
-<img src="https://github.com/user-attachments/assets/059f8ea5-7d2c-42d8-ace8-183b59732810 "img width="500" height="500" alt = "logo"/>
+<img width="524" height="524" alt="Logo" src="https://github.com/user-attachments/assets/7b263cb7-0cfc-4c0f-a739-ada2a1027607" />
 </p><hr>
 <h2 align="center">About The Game</h2>
 <p align="center">Our game <b>LogicRush<b> is based around <b>bitwise operations<b>.</p>
