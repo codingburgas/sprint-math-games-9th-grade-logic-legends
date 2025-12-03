@@ -4,8 +4,8 @@
 <img src="https://github.com/user-attachments/assets/059f8ea5-7d2c-42d8-ace8-183b59732810 "img width="500" height="500" alt = "logo"/>
 </p><hr>
 <h2 align="center">About The Game</h2>
-<p align="center">Our game <b>Mathematical Maze<b> is based around <b>bitwise operations<b>.</p>
-<p align="center"><b>Mathematical Maze<b> is a game, in which you have to solve math problems.</p>
+<p align="center">Our game <b>LogicRush<b> is based around <b>bitwise operations<b>.</p>
+<p align="center"><b>LogicRush<b> is a game, in which you have to solve math problems.</p>
 <p align="center">Think fast, because you have a couple of seconds to think.</p>
 <hr>
 <h2 align="center">Technologies </h2>
