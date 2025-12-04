@@ -7,6 +7,9 @@ void clearScreen()
 {
     cout << "\033[2J\033[1;1H";
 }
+
+// --------------------- MENUS ---------------------
+
 int selectMainMenu()
 {
     clearScreen();
@@ -45,14 +48,22 @@ void printHowToPlay()
     cin.ignore();
     cin.get();
 }
+
+// --------------------- GRID GENERATION ---------------------
+
 void generateGrid(int size)
 {
     srand(time(0)); // seed RNG
+
     cout << "\nGenerated Grid (" << size << "x" << size << "):\n\n";
+
+    // Print column numbers
     cout << "    ";
     for (int col = 1; col <= size; col++)
         cout << col << "   ";
     cout << "\n";
+
+    // Print rows with row numbers
     for (int row = 1; row <= size; row++)
     {
         cout << row << " | ";
@@ -65,6 +76,9 @@ void generateGrid(int size)
     }
     cout << endl;
 }
+
+// --------------------- START GAME ---------------------
+
 void startGame()
 {
     int difficultyChoice = selectDifficultyMenu();
@@ -85,6 +99,9 @@ void startGame()
     cin.ignore();
     cin.get();
 }
+
+// --------------------- MAIN ---------------------
+
 int main()
 {
     bool exitProgram = false;
@@ -110,5 +127,6 @@ int main()
                 break;
         }
     }
+
     return 0;
 }
