@@ -1,11 +1,12 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 void clearScreen()
 {
     cout << "\033[2J\033[1;1H";
 }
-
 int selectMainMenu()
 {
     clearScreen();
@@ -44,63 +45,70 @@ void printHowToPlay()
     cin.ignore();
     cin.get();
 }
-
+void generateGrid(int size)
+{
+    srand(time(0)); // seed RNG
+    cout << "\nGenerated Grid (" << size << "x" << size << "):\n\n";
+    cout << "    ";
+    for (int col = 1; col <= size; col++)
+        cout << col << "   ";
+    cout << "\n";
+    for (int row = 1; row <= size; row++)
+    {
+        cout << row << " | ";
+        for (int col = 1; col <= size; col++)
+        {
+            int randomNumber = rand() % 10;
+            cout << randomNumber << "   ";
+        }
+        cout << "\n";
+    }
+    cout << endl;
+}
 void startGame()
 {
     int difficultyChoice = selectDifficultyMenu();
-
+    int size = 0;
     switch (difficultyChoice)
     {
-        case 1:
-            cout << "You chose Easy (4x4 grid)." << endl;
-            break;
-        case 2:
-            cout << "You chose Normal (5x5 grid)." << endl;
-            break;
-        case 3:
-            cout << "You chose Hard (7x7 grid)." << endl;
-            break;
+        case 1: size = 4; break;
+        case 2: size = 5; break;
+        case 3: size = 7; break;
         default:
-            cout << "Invalid difficulty choice!" << endl;
+            cout << "Invalid choice.\n";
+            cin.ignore();
+            cin.get();
             return;
     }
-    cout << "Generating grid..." << endl;
-
+    generateGrid(size);
+    cout << "Press Enter to return to menu...";
     cin.ignore();
     cin.get();
 }
-
 int main()
 {
     bool exitProgram = false;
-
     while (!exitProgram)
     {
         int mainChoice = selectMainMenu();
-
         switch (mainChoice)
         {
             case 1:
                 startGame();
                 break;
-
             case 2:
                 printHowToPlay();
                 break;
-
             case 3:
                 cout << "Exiting program..." << endl;
                 exitProgram = true;
                 break;
-
             default:
-                cout << "Invalid choice. Please select 1, 2, or 3.\n";
+                cout << "Invalid choice. Press Enter...";
                 cin.ignore();
                 cin.get();
                 break;
         }
     }
-
     return 0;
 }
-
