@@ -53,6 +53,7 @@ void printHowToPlay()
 
 void generateGrid(int size)
 {
+    clearScreen();
     srand(time(0)); // seed RNG
 
     cout << "\nGenerated Grid (" << size << "x" << size << "):\n\n";
@@ -81,6 +82,7 @@ void generateGrid(int size)
 
 void startGame()
 {
+    clearScreen();
     int difficultyChoice = selectDifficultyMenu();
     int size = 0;
     switch (difficultyChoice)
@@ -104,6 +106,7 @@ void startGame()
 
 int main()
 {
+    clearScreen();
     bool exitProgram = false;
     while (!exitProgram)
     {
