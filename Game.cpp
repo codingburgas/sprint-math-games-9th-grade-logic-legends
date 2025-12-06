@@ -115,4 +115,94 @@ namespace
         return true;
     }
 }
+
+// Clear the console.
+void clearScreen()
+{
+    cout << "\033[2J\033[1;1H";
+}
+ 
+// Core game loop for one difficulty setting.
+void runGame(int difficultyLevel)
+{
+    srand(static_cast<unsigned int>(time(nullptr)));
+ 
+    int gridSize, livesLeft, minPointsPerQuestion, maxPointsPerQuestion;
+    bool hasLifeBonusCells, hasBonusPointCells, hasTrapCells;
+    configForDifficulty(difficultyLevel, gridSize, livesLeft, minPointsPerQuestion, maxPointsPerQuestion, hasLifeBonusCells, hasBonusPointCells, hasTrapCells);
+ 
+    string cellQuestions[MAX_GRID][MAX_GRID];
+    int cellAnswers[MAX_GRID][MAX_GRID];
+    bool cellIsTrap[MAX_GRID][MAX_GRID];
+    bool cellGivesLife[MAX_GRID][MAX_GRID];
+    bool cellBonusPoints[MAX_GRID][MAX_GRID];
+    bool cellVisited[MAX_GRID][MAX_GRID] = {};
+    cellVisited[0][0] = true;
+    buildGrid(cellQuestions, cellAnswers, cellIsTrap, cellGivesLife, cellBonusPoints, gridSize, difficultyLevel, hasLifeBonusCells, hasBonusPointCells, hasTrapCells);
+ 
+    int playerRow = 0;
+    int playerCol = 0;
+    int score = 0;
+ 
+    // Loop through turns until you win or run out of lives.
+    while (true)
+    {
+        // Check loss.
+        if (livesLeft <= 0)
+        {
+            clearScreen();
+            cout << "You ran out of lives. Game over.\n";
+            waitForEnter();
+            return;
+        }
+        // Check win.
+        if (playerRow == gridSize - 1 && playerCol == gridSize - 1)
+        {
+            clearScreen();
+            cout << "You reached the goal! Final score: " << score << "\n";
+            waitForEnter();
+            return;
+        }
+ 
+        // Show HUD each turn.
+        printStatus(playerRow, playerCol, gridSize, livesLeft, score, cellVisited);
+ 
+        cout << "Enter direction: ";
+        char dir;
+        cin >> dir;
+        if (dir == 'q' || dir == 'Q')
+            return;
+ 
+        dir = static_cast<char>(std::tolower(static_cast<unsigned char>(dir)));
+        int rowChange, colChange;
+        directionToPositionChange(dir, rowChange, colChange);
+        int nextRow = playerRow + rowChange;
+        int nextCol = playerCol + colChange;
+ 
+        // Ignore invalid commands.
+        if (rowChange == 0 && colChange == 0)
+        {
+            cout << "Use W/A/S/D to move.\n";
+            waitForEnter();
+            continue;
+        }
+ 
+        // Keep player inside the grid.
+        if (nextRow < 0 || nextCol < 0 || nextRow >= gridSize || nextCol >= gridSize)
+        {
+            cout << "You cannot move outside the grid.\n";
+            waitForEnter();
+            continue;
+        }
+ 
+        // Already explored? Just move there without asking again.
+        if (cellVisited[nextRow][nextCol])
+        {
+            playerRow = nextRow;
+            playerCol = nextCol;
+            cout << "You already solved this cell. Moving...\n";
+            waitForEnter();
+            continue;
+        }
+ 
  
