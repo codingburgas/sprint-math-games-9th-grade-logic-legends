@@ -44,3 +44,43 @@ namespace
         }
     }
  
+// Draw a simple ASCII grid with player/start/goal markers.
+    void drawGrid(int gridSize, int playerRow, int playerCol, bool visited[][MAX_GRID])
+    {
+        cout << "\n";
+        for (int r = 0; r < gridSize; ++r)
+        {
+            cout << " ";
+            for (int c = 0; c < gridSize; ++c) cout << "+---";
+            cout << "+\n ";
+ 
+            for (int c = 0; c < gridSize; ++c)
+            {
+                char symbol = '.';
+                if (r == 0 && c == 0 && !(playerRow == 0 && playerCol == 0))
+                    symbol = 'S'; // start
+                if (r == gridSize - 1 && c == gridSize - 1)
+                    symbol = 'G'; // goal
+                if (r == playerRow && c == playerCol)
+                    symbol = 'P'; // player
+                else if (visited[r][c])
+                    symbol = ' '; // explored cells show empty
+                cout << "| " << symbol << " ";
+            }
+            cout << "|\n";
+        }
+        cout << " ";
+        for (int c = 0; c < gridSize; ++c) cout << "+---";
+        cout << "+\n";
+        cout << "   P = you   S = start   G = goal   . = unexplored\n";
+    }
+ 
+    // Quick visual for lives using stars.
+    string livesBar(int livesLeft)
+    {
+        string bar;
+        for (int i = 0; i < livesLeft; ++i) bar += "*";
+        if (bar.empty()) bar = "-";
+        return bar;
+    }
+ 
