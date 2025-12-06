@@ -83,4 +83,15 @@ namespace
         if (bar.empty()) bar = "-";
         return bar;
     }
- 
+
+  // Show where you are and your stats.
+    void printStatus(int playerRow, int playerCol, int gridSize, int livesLeft, int score, bool visited[][MAX_GRID])
+    {
+        clearScreen();
+        cout << "Math Maze (" << gridSize << "x" << gridSize << ")\n";
+        cout << "Reach (" << gridSize - 1 << "," << gridSize - 1 << ")\n";
+        cout << "Position: (" << playerRow << "," << playerCol << ")  Lives: " << livesLeft << "  Points: " << score << endl;
+        cout << "Lives left: [" << livesBar(livesLeft) << "]\n";
+        cout << "Move with W/A/S/D then Enter. Type q to quit to menu.\n";
+        drawGrid(gridSize, playerRow, playerCol, visited);
+    }
