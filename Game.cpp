@@ -95,3 +95,24 @@ namespace
         cout << "Move with W/A/S/D then Enter. Type q to quit to menu.\n";
         drawGrid(gridSize, playerRow, playerCol, visited);
     }
+
+// Traps ask a bonus question; miss it and lose 2 lives.
+    bool handleTrap(int difficultyLevel, int& livesLeft)
+    {
+        cout << "\nTrap! Solve the extra problem to escape." << endl;
+        string trapQuestion;
+        int trapAnswer;
+        bool trapFlag, lifeFlag, bonusFlag;
+        generateProblem(difficultyLevel, trapQuestion, trapAnswer, trapFlag, lifeFlag, bonusFlag);
+        bool ok = askQuestion(trapQuestion, trapAnswer);
+        if (!ok)
+        {
+            livesLeft -= 2;
+            cout << "Wrong! You lost 2 lives.\n";
+            return false;
+        }
+        cout << "Nice! You cleared the trap.\n";
+        return true;
+    }
+}
+ 
