@@ -1,135 +1,60 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+
 using namespace std;
 
-void clearScreen()
+namespace
 {
-    cout << "\033[2J\033[1;1H";
-}
-
-// --------------------- MENUS ---------------------
-
-int selectMainMenu()
-{
-    clearScreen();
-    cout << "Main Menu\n" << endl;
-    cout << "1. Start Game" << endl;
-    cout << "2. How to Play" << endl;
-    cout << "3. Exit" << endl;
-    cout << "\nPlease enter your choice (1-3): ";
-
-    int choice;
-    cin >> choice;
-    return choice;
-}
-
-int selectDifficultyMenu()
-{
-    clearScreen();
-    cout << "Select Difficulty Level:\n" << endl;
-    cout << "1. Easy (4x4 grid)" << endl;
-    cout << "2. Normal (5x5 grid)" << endl;
-    cout << "3. Hard (7x7 grid)" << endl;
-    cout << "\nEnter your choice (1-3): ";
-
-    int choice;
-    cin >> choice;
-    return choice;
-}
-
-void printHowToPlay()
-{
-    clearScreen();
-    cout << "How to Play:\n" << endl;
-    cout << "Select a difficulty level." << endl;
-    cout << "A grid will be generated based on the selected difficulty." << endl;
-    cout << "\nPress Enter to continue.";
-    cin.ignore();
-    cin.get();
-}
-
-// --------------------- GRID GENERATION ---------------------
-
-void generateGrid(int size)
-{
-    clearScreen();
-    srand(time(0)); // seed RNG
-
-    cout << "\nGenerated Grid (" << size << "x" << size << "):\n\n";
-
-    // Print column numbers
-    cout << "    ";
-    for (int col = 1; col <= size; col++)
-        cout << col << "   ";
-    cout << "\n";
-
-    // Print rows with row numbers
-    for (int row = 1; row <= size; row++)
+    // Simple pause: clear leftover input and wait for Enter.
+    void pauseForEnter()
     {
-        cout << row << " | ";
-        for (int col = 1; col <= size; col++)
-        {
-            int randomNumber = rand() % 10;
-            cout << randomNumber << "   ";
-        }
-        cout << "\n";
+        cin.ignore(10000, '\n');
+        cin.get();
     }
-    cout << endl;
-}
 
-// --------------------- START GAME ---------------------
-
-void startGame()
-{
-    clearScreen();
-    int difficultyChoice = selectDifficultyMenu();
-    int size = 0;
-    switch (difficultyChoice)
+    // Main menu prompt.
+    int selectMainMenu()
     {
-        case 1: size = 4; break;
-        case 2: size = 5; break;
-        case 3: size = 7; break;
-        default:
-            cout << "Invalid choice.\n";
-            cin.ignore();
-            cin.get();
-            return;
+        clearScreen();
+        cout << "Math Maze\n\n";
+        cout << "1. Start Game\n";
+        cout << "2. How to Play\n";
+        cout << "3. Exit\n";
+        cout << "\nEnter choice (1-3): ";
+        int choice;
+        cin >> choice;
+        return choice;
     }
-    generateGrid(size);
-    cout << "Press Enter to return to menu...";
-    cin.ignore();
-    cin.get();
+
+    // Difficulty picker.
+    int selectDifficultyMenu()
+    {
+        clearScreen();
+        cout << "Choose Difficulty:\n\n";
+        cout << "1. Easy (4x4, + / -)\n";
+        cout << "2. Normal (5x5, + - x /, bonuses)\n";
+        cout << "3. Hard (7x7, mixed, traps)\n";
+        cout << "\nEnter choice (1-3): ";
+        int choice;
+        cin >> choice;
+        return choice;
+    }
+
+    // Quick how-to screen.
+    void showHowToPlay()
+    {
+        clearScreen();
+        cout << "How to Play:\n\n";
+        cout << "- Start at (0,0) and reach the bottom-right corner.\n";
+        cout << "- Each move asks you to solve a math problem.\n";
+        cout << "- Correct answer: you move and earn points.\n";
+        cout << "- Wrong answer: you stay put and lose a life.\n";
+        cout << "- W/A/S/D to move, q to leave the run.\n\n";
+        cout << "Press Enter to return...";
+        pauseForEnter();
+    }
 }
 
-// --------------------- MAIN ---------------------
-
+// Program entry: loop menus and start runs.
 int main()
 {
-    clearScreen();
     bool exitProgram = false;
-    while (!exitProgram)
-    {
-        int mainChoice = selectMainMenu();
-        switch (mainChoice)
-        {
-            case 1:
-                startGame();
-                break;
-            case 2:
-                printHowToPlay();
-                break;
-            case 3:
-                cout << "Exiting program..." << endl;
-                exitProgram = true;
-                break;
-            default:
-                cout << "Invalid choice. Press Enter...";
-                cin.ignore();
-                cin.get();
-                break;
-        }
-    }
-
-    return 0;
-}
