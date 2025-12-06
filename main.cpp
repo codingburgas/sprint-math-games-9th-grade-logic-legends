@@ -60,3 +60,40 @@ namespace
 int main()
 {
     bool exitProgram = false;
+    // Stay here until player chooses to exit.
+    while (!exitProgram)
+    {
+        int menuChoice = selectMainMenu();
+        switch (menuChoice)
+        {
+            case 1:
+            {
+                int difficultyChoice = selectDifficultyMenu();
+                int difficultyLevel = difficultyChoice;
+                if (difficultyLevel < DIFF_EASY || difficultyLevel > DIFF_HARD)
+                {
+                    cout << "Invalid option.\n";
+                    cout << "Press Enter to continue...";
+                    pauseForEnter();
+                    continue;
+                }
+                runGame(difficultyLevel);
+                break;
+            }
+            case 2:
+                showHowToPlay();
+                break;
+            case 3:
+                cout << "Goodbye!\n";
+                exitProgram = true;
+                break;
+            default:
+                cout << "Invalid option. Press Enter...";
+                pauseForEnter();
+                break;
+        }
+    }
+    return 0;
+}
+ 
+ 
