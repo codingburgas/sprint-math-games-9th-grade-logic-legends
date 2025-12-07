@@ -1,3 +1,4 @@
+
 #include "Problems.h"
 
 #include <cstdlib>
@@ -8,7 +9,7 @@ using namespace std;
 namespace
 {
     // Easy: just plus or minus.
-    void makeEasyProblem(string &questionText, int &correctAnswer)
+    void makeEasyProblem(string& questionText, int& correctAnswer)
     {
         int a = randomInRange(1, 20);
         int b = randomInRange(1, 20);
@@ -27,7 +28,7 @@ namespace
     }
 
     // Normal: plus, minus, times, divide.
-    void makeNormalProblem(string &questionText, int &correctAnswer)
+    void makeNormalProblem(string& questionText, int& correctAnswer)
     {
         int choice = rand() % 4;
 
@@ -71,7 +72,7 @@ namespace
     }
 
     // Hard: mixed expressions and a few extras.
-    void makeHardProblem(string &questionText, int &correctAnswer)
+    void makeHardProblem(string& questionText, int& correctAnswer)
     {
         int choice = rand() % 6;
 
@@ -135,7 +136,7 @@ int randomInRange(int low, int high)
 }
 
 // Make a problem for the chosen difficulty.
-void generateProblem(int difficultyLevel, string &questionText, int &correctAnswer, bool &trapHere, bool &givesLife, bool &givesBonusPoints)
+void generateProblem(int difficultyLevel, string& questionText, int& correctAnswer, bool& trapHere, bool& givesLife, bool& givesBonusPoints)
 {
     if (difficultyLevel == DIFF_EASY)
         makeEasyProblem(questionText, correctAnswer);
@@ -150,7 +151,7 @@ void generateProblem(int difficultyLevel, string &questionText, int &correctAnsw
 }
 
 // Set size, lives, and points for each difficulty.
-void configForDifficulty(int difficultyLevel, int &gridSize, int &startingLives, int &minPointsPerQuestion, int &maxPointsPerQuestion, bool &hasLifeBonusCells, bool &hasBonusPointCells, bool &hasTrapCells)
+void configForDifficulty(int difficultyLevel, int& gridSize, int& startingLives, int& minPointsPerQuestion, int& maxPointsPerQuestion, bool& hasLifeBonusCells, bool& hasBonusPointCells, bool& hasTrapCells)
 {
     if (difficultyLevel == DIFF_EASY)
     {

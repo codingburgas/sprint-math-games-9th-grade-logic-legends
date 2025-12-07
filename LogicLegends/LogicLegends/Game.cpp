@@ -1,15 +1,16 @@
+
 #include "Game.h"
 #include "Problems.h"
- 
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 #include <cctype>
 #include <limits>
- 
+
 using namespace std;
- 
+
 namespace
 {
     // Pause so the player can read messages.
@@ -19,7 +20,7 @@ namespace
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin.get();
     }
- 
+
     // Ask a math question and see if they got it.
     bool askQuestion(const string& questionText, int correctAnswer)
     {
@@ -29,7 +30,7 @@ namespace
         cin >> userAnswer;
         return userAnswer == correctAnswer;
     }
- 
+
     // Turn WASD into row/col changes.
     void directionToPositionChange(char dir, int& rowChange, int& colChange)
     {
@@ -37,15 +38,15 @@ namespace
         colChange = 0;
         switch (dir)
         {
-            case 'w': rowChange = -1; colChange = 0; break;
-            case 's': rowChange = 1; colChange = 0; break;
-            case 'a': rowChange = 0; colChange = -1; break;
-            case 'd': rowChange = 0; colChange = 1; break;
-            default: break;
+        case 'w': rowChange = -1; colChange = 0; break;
+        case 's': rowChange = 1; colChange = 0; break;
+        case 'a': rowChange = 0; colChange = -1; break;
+        case 'd': rowChange = 0; colChange = 1; break;
+        default: break;
         }
     }
- 
-// Draw a simple ASCII grid with player/start/goal markers.
+
+    // Draw a simple ASCII grid with player/start/goal markers.
     void drawGrid(int gridSize, int playerRow, int playerCol, bool visited[][MAX_GRID])
     {
         cout << "\n";
@@ -54,7 +55,7 @@ namespace
             cout << " ";
             for (int c = 0; c < gridSize; ++c) cout << "+---";
             cout << "+\n ";
- 
+
             for (int c = 0; c < gridSize; ++c)
             {
                 char symbol = '.';
@@ -75,7 +76,7 @@ namespace
         cout << "+\n";
         cout << "   P = you   S = start   G = goal   . = unexplored\n";
     }
- 
+
     // Quick visual for lives using stars.
     string livesBar(int livesLeft)
     {
@@ -85,7 +86,7 @@ namespace
         return bar;
     }
 
-  // Show where you are and your stats.
+    // Show where you are and your stats.
     void printStatus(int playerRow, int playerCol, int gridSize, int livesLeft, int score, bool visited[][MAX_GRID])
     {
         clearScreen();
@@ -97,7 +98,7 @@ namespace
         drawGrid(gridSize, playerRow, playerCol, visited);
     }
 
-// Traps ask a bonus question; miss it and lose 2 lives.
+    // Traps ask a bonus question; miss it and lose 2 lives.
     bool handleTrap(int difficultyLevel, int& livesLeft)
     {
         cout << "\nTrap! Solve the extra problem to escape." << endl;
@@ -122,16 +123,16 @@ void clearScreen()
 {
     cout << "\033[2J\033[1;1H";
 }
- 
+
 // Core game loop for one difficulty setting.
 void runGame(int difficultyLevel)
 {
     srand(static_cast<unsigned int>(time(nullptr)));
- 
+
     int gridSize, livesLeft, minPointsPerQuestion, maxPointsPerQuestion;
     bool hasLifeBonusCells, hasBonusPointCells, hasTrapCells;
     configForDifficulty(difficultyLevel, gridSize, livesLeft, minPointsPerQuestion, maxPointsPerQuestion, hasLifeBonusCells, hasBonusPointCells, hasTrapCells);
- 
+
     string cellQuestions[MAX_GRID][MAX_GRID];
     int cellAnswers[MAX_GRID][MAX_GRID];
     bool cellIsTrap[MAX_GRID][MAX_GRID];
@@ -140,11 +141,11 @@ void runGame(int difficultyLevel)
     bool cellVisited[MAX_GRID][MAX_GRID] = {};
     cellVisited[0][0] = true;
     buildGrid(cellQuestions, cellAnswers, cellIsTrap, cellGivesLife, cellBonusPoints, gridSize, difficultyLevel, hasLifeBonusCells, hasBonusPointCells, hasTrapCells);
- 
+
     int playerRow = 0;
     int playerCol = 0;
     int score = 0;
- 
+
     // Loop through turns until you win or run out of lives.
     while (true)
     {
@@ -164,22 +165,22 @@ void runGame(int difficultyLevel)
             waitForEnter();
             return;
         }
- 
+
         // Show HUD each turn.
         printStatus(playerRow, playerCol, gridSize, livesLeft, score, cellVisited);
- 
+
         cout << "Enter direction: ";
         char dir;
         cin >> dir;
         if (dir == 'q' || dir == 'Q')
             return;
- 
+
         dir = static_cast<char>(std::tolower(static_cast<unsigned char>(dir)));
         int rowChange, colChange;
         directionToPositionChange(dir, rowChange, colChange);
         int nextRow = playerRow + rowChange;
         int nextCol = playerCol + colChange;
- 
+
         // Ignore invalid commands.
         if (rowChange == 0 && colChange == 0)
         {
@@ -187,7 +188,7 @@ void runGame(int difficultyLevel)
             waitForEnter();
             continue;
         }
- 
+
         // Keep player inside the grid.
         if (nextRow < 0 || nextCol < 0 || nextRow >= gridSize || nextCol >= gridSize)
         {
@@ -195,7 +196,7 @@ void runGame(int difficultyLevel)
             waitForEnter();
             continue;
         }
- 
+
         // Already explored? Just move there without asking again.
         if (cellVisited[nextRow][nextCol])
         {
