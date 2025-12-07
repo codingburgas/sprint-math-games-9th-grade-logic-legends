@@ -126,4 +126,78 @@ namespace
             }
         }
     }
+
+    // Basic random helper.
+    int randomInRange(int low, int high)
+    {
+        return low + (rand() % (high - low + 1));
+    }
+
+    // Make a problem for the chosen difficulty.
+    void generateProblem(int difficultyLevel, string &questionText, int &correctAnswer, bool &trapHere, bool &givesLife, bool &givesBonusPoints)
+    {
+        if (difficultyLevel == DIFF_EASY)
+            makeEasyProblem(questionText, correctAnswer);
+        else if (difficultyLevel == DIFF_NORMAL)
+            makeNormalProblem(questionText, correctAnswer);
+        else
+            makeHardProblem(questionText, correctAnswer);
+
+        trapHere = false;
+        givesLife = false;
+        givesBonusPoints = false;
+    }
+
+    // Set size, lives, and points for each difficulty.
+    void configForDifficulty(int difficultyLevel, int &gridSize, int &startingLives, int &minPointsPerQuestion, int &maxPointsPerQuestion, bool &hasLifeBonusCells, bool &hasBonusPointCells, bool &hasTrapCells)
+    {
+        if (difficultyLevel == DIFF_EASY)
+        {
+            gridSize = 4;
+            startingLives = 4;
+            minPointsPerQuestion = 5;
+            maxPointsPerQuestion = 10;
+            hasLifeBonusCells = false;
+            hasBonusPointCells = false;
+            hasTrapCells = false;
+            return;
+        }
+        if (difficultyLevel == DIFF_NORMAL)
+        {
+            gridSize = 5;
+            startingLives = 3;
+            minPointsPerQuestion = 8;
+            maxPointsPerQuestion = 15;
+            hasLifeBonusCells = true;
+            hasBonusPointCells = true;
+            hasTrapCells = false;
+            return;
+        }
+        // Hard
+        gridSize = 7;
+        startingLives = 2;
+        minPointsPerQuestion = 10;
+        maxPointsPerQuestion = 25;
+        hasLifeBonusCells = true;
+        hasBonusPointCells = true;
+        hasTrapCells = true;
+    }
+
+    // Fill the grid with questions and mark bonus/trap cells.
+    void buildGrid(string cellQuestions[][MAX_GRID], int cellAnswers[][MAX_GRID], bool cellIsTrap[][MAX_GRID], bool cellGivesLife[][MAX_GRID], bool cellBonusPoints[][MAX_GRID], int gridSize, int difficultyLevel, bool hasLifeBonusCells, bool hasBonusPointCells, bool hasTrapCells)
+    {
+        for (int r = 0; r < gridSize; ++r)
+        {
+            for (int c = 0; c < gridSize; ++c)
+            {
+                generateProblem(difficultyLevel, cellQuestions[r][c], cellAnswers[r][c], cellIsTrap[r][c], cellGivesLife[r][c], cellBonusPoints[r][c]);
+                if (hasLifeBonusCells && (rand() % 100) < 10 && !(r == 0 && c == 0))
+                    cellGivesLife[r][c] = true;
+                if (hasBonusPointCells && (rand() % 100) < 15 && !(r == 0 && c == 0))
+                    cellBonusPoints[r][c] = true;
+                if (hasTrapCells && (rand() % 100) < 12 && !(r == 0 && c == 0))
+                    cellIsTrap[r][c] = true;
+            }
+        }
+    }
 }
