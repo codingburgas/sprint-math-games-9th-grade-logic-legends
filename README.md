@@ -25,22 +25,17 @@
 
 <h2 align="center" id="about-the-game">🧠 About The Game</h2>
 
-<p align="center">
-Logic Rush is a console-based C++ math challenge game where every move tests your logic and problem-solving skills. <br>
-Players start at the top-left cell <b>(0,0)</b> and aim to reach the final cell <b>(N-1, N-1)</b>.  
-Each cell contains a math problem that must be solved correctly to enter.  
-Correct answers allow progress and earn points, while mistakes cost lives.
-</p>
+- You start at (0,0). The goal is the bottom-right cell.
+- Pick a difficulty. Harder modes have bigger grids and trickier problems.
+- When you try to move into a cell, you get a math question for that cell.
+- Answer right: you move and earn points. Answer wrong: you stay and lose a life.
+- Controls: `W` up, `A` left, `S` down, `D` right. Press `q` to quit a run.
 
-<p align="center">
-📊 The game includes three difficulty levels:<br><br>
+### Difficulty Vibe
+- **Easy (4x4)**: only + and -; 4 lives; 5–10 points.
+- **Normal (5x5)**: + - × ÷; 3 lives; 8–15 points; some bonus cells and extra-life cells.
+- **Hard (7x7)**: all normal stuff plus mixed expressions, squares, modulo; 2 lives; 10–25 points; traps ask an extra question and can cost 2 lives.
 
-<b>🟢 Easy:</b> 4×4 grid, addition and subtraction, 4 lives<br>
-<b>🟡 Normal:</b> 5×5 grid, addition, subtraction, multiplication, integer division, 3 lives, bonus + extra life cells<br>
-<b>🔴 Hard:</b> 7×7 grid, mixed expressions, squares, modulo operations, 2 lives, trap cells<br><br>
-
-Each level introduces unique challenges to keep the gameplay engaging and replayable.
-</p>
 <hr>
 
 ## How to Build and Play
