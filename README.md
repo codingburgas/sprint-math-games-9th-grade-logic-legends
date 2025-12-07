@@ -43,27 +43,19 @@ Each level introduces unique challenges to keep the gameplay engaging and replay
 </p>
 <hr>
 
-<h2 align="center" id="executing-program">▶️ Executing Program</h2>
+## How to Build and Play
+From the project folder:
+```bash
+# Linux/macOS
+g++ -std=c++17 main.cpp Game.cpp Problems.cpp -o main
+./main
 
-<p>
+# Windows (MinGW)
+g++ -std=c++17 main.cpp Game.cpp Problems.cpp -o main.exe
+main.exe
+```
+If `g++` is missing, install a C++ compiler (Ubuntu/Debian: `sudo apt install build-essential`; Windows: install MinGW-w64 and use its `g++`).
 
-📂 <b>Open a terminal or command prompt.</b><br><br>
-
-Navigate to the project folder.<br><br>
-
-💻 <b>Compile the program:</b>
-<pre>
-g++ main.cpp -o LogicRush
-</pre>
-
-🚀 <b>Run the program:</b>
-<pre>
-./LogicRush   # Linux/macOS
-LogicRush.exe # Windows
-</pre>
-
-Follow the on-screen instructions to move through the grid and solve math problems.
-</p>
 <hr>
 
 <h2 align="center" id="technologies">🛠️ Technologies</h2>
