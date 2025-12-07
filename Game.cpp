@@ -205,5 +205,48 @@ void runGame(int difficultyLevel)
             waitForEnter();
             continue;
         }
- 
- 
+
+        // Ask the problem for the destination cell.
+        bool correct = askQuestion(cellQuestions[nextRow][nextCol], cellAnswers[nextRow][nextCol]);
+        if (!correct)
+        {
+            livesLeft -= 1;
+            cout << "Wrong answer. You lost a life. Lives left: " << livesLeft << "\n";
+            waitForEnter();
+            continue;
+        }
+
+        // Handle traps (hard mode).
+        if (cellIsTrap[nextRow][nextCol])
+        {
+            bool trapCleared = handleTrap(difficultyLevel, livesLeft);
+            if (!trapCleared || livesLeft <= 0)
+            {
+                cout << "Lives left: " << livesLeft << "\n";
+                waitForEnter();
+                continue;
+            }
+        }
+
+        // Add points and bonuses.
+        int earned = randomInRange(minPointsPerQuestion, maxPointsPerQuestion);
+        if (cellBonusPoints[nextRow][nextCol])
+        {
+            earned *= 2;
+            cout << "Bonus cell! Points doubled.\n";
+        }
+        score += earned;
+        if (cellGivesLife[nextRow][nextCol])
+        {
+            livesLeft += 1;
+            cout << "Lucky cell! You gained +1 life.\n";
+        }
+
+        // Move the player.
+        cout << "Correct! +" << earned << " points.\n";
+        playerRow = nextRow;
+        playerCol = nextCol;
+        cellVisited[playerRow][playerCol] = true;
+        waitForEnter();
+    }
+}
