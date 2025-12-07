@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/About%20The%20Game-181818?style=for-the-badge&color=blue" />
   </a>
   <a href="#how-to-build-and-play">
-    <img src="https://img.shields.io/badge/How%20to%20Build%20and%20Play-181818?style=for-the-badge&color=green%22 />
+    <img src="https://img.shields.io/badge/How%20to%20Build%20and%20Play-181818?style=for-the-badge&color=green%22" />
   </a>
   <a href="#technologies">
     <img src="https://img.shields.io/badge/Technologies-181818?style=for-the-badge&color=orange" />
